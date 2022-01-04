@@ -1,4 +1,4 @@
-# Next.js + Typescript + styled-components 보일러 플레이트
+# next.js + typescript + styled-components 보일러 플레이트
 
 ---
 
@@ -9,7 +9,7 @@
 "react-dom": "17.0.2",  
 "styled-components": "^5.3.3  
 
-### DevDependencies
+### devDependencies
 
 "@types/node": "17.0.7",  
 "@types/react": "17.0.38",  

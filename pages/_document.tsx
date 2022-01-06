@@ -1,11 +1,16 @@
-import Document, { DocumentContext } from "next/document";
-import { ServerStyleSheet } from "styled-components";
+import Document, {
+  Html,
+  Head,
+  Main,
+  NextScript,
+  DocumentContext,
+} from 'next/document';
+import { ServerStyleSheet } from 'styled-components';
 
-class CustomDocument extends Document {
+class MyDocument extends Document {
   static async getInitialProps(ctx: DocumentContext) {
     const sheet = new ServerStyleSheet();
     const originalRenderPage = ctx.renderPage;
-
     try {
       ctx.renderPage = () =>
         originalRenderPage({
@@ -14,7 +19,6 @@ class CustomDocument extends Document {
         });
 
       const initialProps = await Document.getInitialProps(ctx);
-
       return {
         ...initialProps,
         styles: (
@@ -24,12 +28,22 @@ class CustomDocument extends Document {
           </>
         ),
       };
-    } catch (error) {
-      throw error;
     } finally {
       sheet.seal();
     }
   }
+
+  render() {
+    return (
+      <Html>
+        <Head></Head>
+        <body>
+          <Main />
+          <NextScript />
+        </body>
+      </Html>
+    );
+  }
 }
 
-export default CustomDocument;
+export default MyDocument;
